@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
   <title>Jasmine, Will You Be My Valentine? 💘</title>
   <style>
     * { box-sizing: border-box; }
@@ -149,23 +150,32 @@
     }
 
     noBtn.addEventListener('mouseenter', moveNo);
+
     noBtn.addEventListener('touchstart', (e) => {
       e.preventDefault();
-      tease.textContent = lines[noCount % lines.length];
+      if (noCount === 0) {
+        tease.textContent = "Heyy… don’t click on No 🙈 my heart is right here 💖";
+      } else {
+        tease.textContent = lines[(noCount - 1) % lines.length];
+      }
       noCount++;
       moveNo();
     });
 
     noBtn.addEventListener('click', () => {
-      tease.textContent = lines[noCount % lines.length];
+      if (noCount === 0) {
+        tease.textContent = "Heyy… don’t click on No 🙈 my heart is right here 💖";
+      } else {
+        tease.textContent = lines[(noCount - 1) % lines.length];
+      }
       noCount++;
     });
 
     function sayYes() {
       document.body.innerHTML = `
         <div class="card">
-          <h1>Yaaay Jasmine!!! 💕🌹</h1>
-          <p>Best Valentine ever 💖<br>Roses, chocolates, and smiles are waiting 🍫🌹✨</p>
+          <h1>Hey Jasmine 💖</h1>
+          <p>Will you be my Valentine? 💘💞💗</p>
         </div>`;
     }
 
