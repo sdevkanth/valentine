@@ -151,8 +151,7 @@
 
     noBtn.addEventListener('mouseenter', moveNo);
 
-    noBtn.addEventListener('touchstart', (e) => {
-      e.preventDefault();
+    function handleNo() {
       if (noCount === 0) {
         tease.textContent = "Heyy… don’t click on No 🙈 my heart is right here 💖";
       } else {
@@ -160,22 +159,23 @@
       }
       noCount++;
       moveNo();
-    });
+    }
 
-    noBtn.addEventListener('click', () => {
-      if (noCount === 0) {
-        tease.textContent = "Heyy… don’t click on No 🙈 my heart is right here 💖";
-      } else {
-        tease.textContent = lines[(noCount - 1) % lines.length];
-      }
-      noCount++;
+    noBtn.addEventListener('click', handleNo);
+    noBtn.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      handleNo();
     });
 
     function sayYes() {
       document.body.innerHTML = `
         <div class="card">
-          <h1>Hey Jasmine 💖</h1>
-          <p>Will you be my Valentine? 💘💞💗</p>
+          <h1>Yaaay Jasmine!!! 💕🌹</h1>
+          <p>
+            You just made me the happiest person ever 💖<br><br>
+            Our Valentine’s date is officially on! 🍫🌹✨<br>
+            Get ready for smiles, chocolates, and lots of love 💞
+          </p>
         </div>`;
     }
 
